@@ -1,4 +1,4 @@
-package configuration
+package calendari.calendar.configuration.google
 
 import java.io.File
 import java.nio.charset.Charset

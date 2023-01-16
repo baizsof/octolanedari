@@ -1,7 +1,7 @@
-package calendari.calendar.configuration
+package calendari.calendar.configuration.google
 
-import configuration.getGoogleCalendarConfigurationFile
-import configuration.googleCalendarConfigurationResourcesFolder
+import calendari.calendar.configuration.CalendarConfigurationException
+import calendari.calendar.configuration.GoogleCalendarConfiguration
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
