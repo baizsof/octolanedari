@@ -3,7 +3,7 @@ package calendari.calendar.connector
 import calendari.calendar.configuration.CalendarConfiguration
 import calendari.calendar.Event
 import calendari.calendar.mapper.EventMapper
-import calendari.calendar.parser.UrlJsonCalendarParser
+import calendari.calendar.parser.JsonWebCalendarParser
 import calendari.calendar.mapper.TeamUpEventMapper
 import org.apache.http.client.utils.URIBuilder
 import org.json.JSONObject
@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter
 
 class TeamupCalendarConnector(
     private val configuration : CalendarConfiguration,
-    private val parser : UrlJsonCalendarParser = UrlJsonCalendarParser(),
+    private val parser : JsonWebCalendarParser = JsonWebCalendarParser(),
     private val mapper : EventMapper<JSONObject> = TeamUpEventMapper()
 ) : CalendarConnector {
     private val dateFormatUsedByTeamUp: DateTimeFormatter = DateTimeFormatter.ISO_DATE

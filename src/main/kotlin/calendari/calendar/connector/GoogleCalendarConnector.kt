@@ -4,8 +4,8 @@ import calendari.calendar.configuration.CalendarConfiguration
 import calendari.calendar.Event
 import calendari.calendar.mapper.EventMapper
 import calendari.calendar.mapper.GoogleEventMapper
-import calendari.calendar.parser.JsonCalendarParser
-import calendari.calendar.parser.UrlJsonCalendarParser
+import calendari.calendar.parser.WebCalendarParser
+import calendari.calendar.parser.JsonWebCalendarParser
 import org.apache.http.client.utils.URIBuilder
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormatter
@@ -17,7 +17,7 @@ import java.time.LocalDate
 
 class GoogleCalendarConnector(
     private val configuration : CalendarConfiguration,
-    private val parser : JsonCalendarParser = UrlJsonCalendarParser(),
+    private val parser : WebCalendarParser<JSONObject> = JsonWebCalendarParser(),
     private val mapper : EventMapper<JSONObject> = GoogleEventMapper()
 ) : CalendarConnector {
     private val dateFormatUsedByGoogle: DateTimeFormatter = ISODateTimeFormat.dateTime()

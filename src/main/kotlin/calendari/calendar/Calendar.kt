@@ -2,20 +2,20 @@ package calendari.calendar
 
 import calendari.calendar.connector.CalendarConnector
 import calendari.calendar.filter.AllEventFilter
-import calendari.calendar.filter.Filter
+import calendari.calendar.filter.EventFilter
 import org.joda.time.DateTime
 import org.joda.time.Interval
-import calendari.calendar.interval.searcher.DifferenceIntervalSearcher
+import calendari.calendar.interval.searcher.GapIntervalSearcher
 import java.time.LocalDate
 
 open class Calendar(
     private val calendarConnector: CalendarConnector,
     val calendarName: String,
-    private val filter : Filter = AllEventFilter()
+    private val eventFilter : EventFilter = AllEventFilter()
 ) {
     fun getEvents(from: LocalDate, to: LocalDate): List<Event> {
         val allEvents = calendarConnector.getEvents(from, to)
-        return filter.doFilter(allEvents)
+        return eventFilter.doFilter(allEvents)
     }
 
     fun getEventsIntervals(from: LocalDate, to: LocalDate): List<Interval> {
@@ -34,7 +34,7 @@ open class Calendar(
             createDateTime(end)
         )
 
-        val freeIntervals = DifferenceIntervalSearcher().search(
+        val freeIntervals = GapIntervalSearcher().search(
             searchInterval,
             sortedIntervals
         )
@@ -71,7 +71,7 @@ open class Calendar(
 
         if (calendarConnector != other.calendarConnector) return false
         if (calendarName != other.calendarName) return false
-        if (filter != other.filter) return false
+        if (eventFilter != other.eventFilter) return false
 
         return true
     }
@@ -79,7 +79,7 @@ open class Calendar(
     override fun hashCode(): Int {
         var result = calendarConnector.hashCode()
         result = 31 * result + calendarName.hashCode()
-        result = 31 * result + filter.hashCode()
+        result = 31 * result + eventFilter.hashCode()
         return result
     }
 
