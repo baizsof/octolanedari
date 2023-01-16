@@ -1,0 +1,138 @@
+{
+  "summary": "test@gmail.com",
+  "kind": "calendar#events",
+  "defaultReminders": [],
+  "nextSyncToken": "test-token",
+  "accessRole": "freeBusyReader",
+  "timeZone": "Europe/Budapest",
+  "etag": "test-e-tag",
+  "updated": "2022-12-13T09:28:49.307Z",
+  "items": [
+    {
+      "visibility": "private",
+      "kind": "calendar#event",
+      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
+      "iCalUID": "test@google.com",
+      "start": {
+        "dateTime": "2022-11-20T11:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "etag": "test-e-tag",
+      "end": {
+        "dateTime": "2022-11-20T16:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "id": "test-id",
+      "updated": "2022-09-07T11:32:04.619Z",
+      "status": "confirmed"
+    },
+    {
+      "visibility": "private",
+      "kind": "calendar#event",
+      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
+      "iCalUID": "test@google.com",
+      "start": {
+        "dateTime": "2022-11-20T18:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "etag": "test-e-tag",
+      "end": {
+        "dateTime": "2022-11-20T19:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "id": "test-id",
+      "updated": "2022-10-09T11:51:17.463Z",
+      "status": "confirmed"
+    },
+    {
+      "visibility": "private",
+      "kind": "calendar#event",
+      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
+      "iCalUID": "test@google.com",
+      "start": {
+        "dateTime": "2022-11-20T18:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "etag": "test-e-tag",
+      "end": {
+        "dateTime": "2022-11-20T21:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "id": "test-id",
+      "updated": "2022-10-20T06:10:26.031Z",
+      "status": "confirmed"
+    },
+    {
+      "visibility": "private",
+      "kind": "calendar#event",
+      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
+      "iCalUID": "test@google.com",
+      "start": {
+        "dateTime": "2022-11-21T08:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "etag": "test-e-tag",
+      "end": {
+        "dateTime": "2022-11-21T15:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "id": "test-id",
+      "updated": "2022-11-10T20:50:12.399Z",
+      "status": "confirmed"
+    },
+    {
+      "visibility": "private",
+      "kind": "calendar#event",
+      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
+      "iCalUID": "test@google.com",
+      "start": {
+        "dateTime": "2022-11-21T09:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "etag": "test-e-tag",
+      "end": {
+        "dateTime": "2022-11-21T18:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "id": "test-id",
+      "updated": "2022-11-11T16:17:24.709Z",
+      "status": "confirmed"
+    },
+    {
+      "visibility": "private",
+      "kind": "calendar#event",
+      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
+      "iCalUID": "test@google.com",
+      "start": {
+        "dateTime": "2022-11-20T16:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "etag": "test-e-tag",
+      "end": {
+        "dateTime": "2022-11-20T20:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "id": "test-id",
+      "updated": "2022-11-11T21:39:16.706Z",
+      "status": "confirmed"
+    },
+    {
+      "visibility": "private",
+      "kind": "calendar#event",
+      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
+      "iCalUID": "test@google.com",
+      "start": {
+        "dateTime": "2022-11-21T12:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "etag": "test-e-tag",
+      "end": {
+        "dateTime": "2022-11-21T20:00:00+01:00",
+        "timeZone": "Europe/Budapest"
+      },
+      "id": "test-id",
+      "updated": "2022-11-14T11:27:18.113Z",
+      "status": "confirmed"
+    }
+  ]
+}
