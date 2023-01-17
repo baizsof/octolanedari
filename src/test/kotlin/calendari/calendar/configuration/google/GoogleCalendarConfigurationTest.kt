@@ -2,6 +2,8 @@ package calendari.calendar.configuration.google
 
 import calendari.calendar.configuration.CalendarConfigurationException
 import calendari.calendar.configuration.GoogleCalendarConfiguration
+import calendari.calendar.configuration.calendarConfigurationResourcesFolder
+import calendari.calendar.configuration.getTestCalendarConfigurationFile
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -10,7 +12,7 @@ import java.util.Properties
 import java.util.TimeZone
 
 class GoogleCalendarConfigurationTest {
-    private val generatedConfigurationFile = googleCalendarConfigurationResourcesFolder.resolve("google-test-generated.calendar").toFile()
+    private val generatedConfigurationFile = calendarConfigurationResourcesFolder.resolve("google-test-generated.calendar").toFile()
 
     @BeforeEach
     fun setUp() {
@@ -19,8 +21,8 @@ class GoogleCalendarConfigurationTest {
 
     @Test
     fun `given google calendar configuration file contains calendar-id key, when getBaseUrl called, then expected URL is returned`() {
-        val validConfigurationFile1 = getGoogleCalendarConfigurationFile(1)
-        val configuration = GoogleCalendarConfiguration.fromFile(validConfigurationFile1)
+        val validConfigurationFile = getTestCalendarConfigurationFile("google")
+        val configuration = GoogleCalendarConfiguration.fromFile(validConfigurationFile)
 
         val expectedUrl = URL("https://clients6.google.com/calendar/v3/calendars/test1@gmail.com/events?&key=test1-api-key")
         Assertions.assertEquals(expectedUrl, configuration.getBaseUrl())
@@ -28,8 +30,8 @@ class GoogleCalendarConfigurationTest {
 
     @Test
     fun `given google calendar configuration file contains time-zone key, when getTimezone called, then expected TimeZone is returned`() {
-        val validConfigurationFile1 = getGoogleCalendarConfigurationFile(1)
-        val configuration = GoogleCalendarConfiguration.fromFile(validConfigurationFile1)
+        val validConfigurationFile = getTestCalendarConfigurationFile("google")
+        val configuration = GoogleCalendarConfiguration.fromFile(validConfigurationFile)
 
         val expectedTimeZone = TimeZone.getTimeZone("Europe/Budapest")
         Assertions.assertEquals(expectedTimeZone, configuration.getTimezone())
