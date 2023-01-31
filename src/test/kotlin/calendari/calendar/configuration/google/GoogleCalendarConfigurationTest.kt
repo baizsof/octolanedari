@@ -2,16 +2,16 @@ package calendari.calendar.configuration.google
 
 import calendari.calendar.configuration.CalendarConfigurationException
 import calendari.calendar.configuration.GoogleCalendarConfiguration
-import calendari.calendar.configuration.calendarConfigurationResourcesFolder
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.net.URL
+import java.nio.file.Paths
 import java.util.Properties
 import java.util.TimeZone
 
 class GoogleCalendarConfigurationTest {
-    private val generatedConfigurationFile = calendarConfigurationResourcesFolder.resolve("google-test-generated.calendar").toFile()
+    private val generatedConfigurationFile = Paths.get("src", "test", "resources", "calendar", "configuration", "google-test-generated.calendar").toFile()
 
     @BeforeEach
     fun setUp() {
@@ -49,6 +49,7 @@ class GoogleCalendarConfigurationTest {
     @Test
     fun `given google calendar configuration file does not contain calendar-id key, when GoogleCalendarConfiguration is created, then CalendarConfigurationException is thrown`() {
         val properties = Properties()
+        properties["connector"] = "google"
         properties["api-key"] = "test-api-key"
         properties["time-zone"] = "Europe/Budapest"
         storeGeneratedProperties(properties)
@@ -63,6 +64,7 @@ class GoogleCalendarConfigurationTest {
     @Test
     fun `given google calendar configuration file does not contain api-key key, when GoogleCalendarConfiguration is created, then CalendarConfigurationException is thrown`() {
         val properties = Properties()
+        properties["connector"] = "google"
         properties["calendar-id"] = "test@gmail.com"
         properties["time-zone"] = "Europe/Budapest"
         storeGeneratedProperties(properties)
@@ -77,6 +79,7 @@ class GoogleCalendarConfigurationTest {
     @Test
     fun `given google calendar configuration file does not contain time-zone key, when GoogleCalendarConfiguration is created, then CalendarConfigurationException is thrown`() {
         val properties = Properties()
+        properties["connector"] = "google"
         properties["calendar-id"] = "test@gmail.com"
         properties["api-key"] = "test-api-key"
         storeGeneratedProperties(properties)
