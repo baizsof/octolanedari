@@ -24,7 +24,7 @@ class TeamupCalendarConfigurationTest {
         val properties = Properties()
         properties["time-zone"] = "Europe/Budapest"
         properties["calendar-id"] = "test-calendar-id"
-        saveGeneratedProperties(properties)
+        storeGeneratedProperties(properties)
 
         val configuration = TeamupCalendarConfiguration.fromFile(generatedConfigurationFile)
 
@@ -46,7 +46,7 @@ class TeamupCalendarConfigurationTest {
     fun `given teamup calendar configuration file does not contain calendar-id key, when TeamupCalendarConfiguration is created, then CalendarConfigurationException is thrown`() {
         val properties = Properties()
         properties["time-zone"] = "Europe/Budapest"
-        saveGeneratedProperties(properties)
+        storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
             TeamupCalendarConfiguration.fromFile(
@@ -60,7 +60,7 @@ class TeamupCalendarConfigurationTest {
     fun `given google calendar configuration file does not contain time-zone key, when TeamupCalendarConfiguration is created, then CalendarConfigurationException is thrown`() {
         val properties = Properties()
         properties["calendar-id"] = "test-calendar-id"
-        saveGeneratedProperties(properties)
+        storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
             TeamupCalendarConfiguration.fromFile(
@@ -70,7 +70,7 @@ class TeamupCalendarConfigurationTest {
     }
 
 
-    fun saveGeneratedProperties(properties: Properties) {
+    fun storeGeneratedProperties(properties: Properties) {
         properties.store(generatedConfigurationFile.writer(), null)
     }
 
