@@ -20,9 +20,13 @@ class TeamupCalendarConfigurationTest {
     }
 
     @Test
-    fun `given google calendar configuration file contains calendar-id key, when getBaseUrl called, then expected URL is returned`() {
-        val validConfigurationFile = getTestCalendarConfigurationFile("teamup")
-        val configuration = TeamupCalendarConfiguration.fromFile(validConfigurationFile)
+    fun `given google calendar configuration file contains calendar-id key, when getbaseurl called, then expected url is returned`() {
+        val properties = Properties()
+        properties["time-zone"] = "Europe/Budapest"
+        properties["calendar-id"] = "test-calendar-id"
+        saveGeneratedProperties(properties)
+
+        val configuration = TeamupCalendarConfiguration.fromFile(generatedConfigurationFile)
 
         val expectedUrl = URL("https://teamup.com/test-calendar-id/events?tz=Europe/Budapest")
         Assertions.assertEquals(expectedUrl, configuration.getBaseUrl())
