@@ -3,7 +3,6 @@ package calendari.calendar.configuration.google
 import calendari.calendar.configuration.CalendarConfigurationException
 import calendari.calendar.configuration.GoogleCalendarConfiguration
 import calendari.calendar.configuration.calendarConfigurationResourcesFolder
-import calendari.calendar.configuration.getTestCalendarConfigurationFile
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -21,17 +20,27 @@ class GoogleCalendarConfigurationTest {
 
     @Test
     fun `given google calendar configuration file contains calendar-id key, when getBaseUrl called, then expected URL is returned`() {
-        val validConfigurationFile = getTestCalendarConfigurationFile("google")
-        val configuration = GoogleCalendarConfiguration.fromFile(validConfigurationFile)
+        val properties = Properties()
+        properties["connector"] = "google"
+        properties["calendar-id"] = "test@gmail.com"
+        properties["api-key"] = "test-api-key"
+        properties["time-zone"] = "Europe/Budapest"
+        storeGeneratedProperties(properties)
+        val configuration = GoogleCalendarConfiguration.fromFile(generatedConfigurationFile)
 
-        val expectedUrl = URL("https://clients6.google.com/calendar/v3/calendars/test1@gmail.com/events?&key=test1-api-key")
+        val expectedUrl = URL("https://clients6.google.com/calendar/v3/calendars/test@gmail.com/events?&key=test-api-key")
         Assertions.assertEquals(expectedUrl, configuration.getBaseUrl())
     }
 
     @Test
     fun `given google calendar configuration file contains time-zone key, when getTimezone called, then expected TimeZone is returned`() {
-        val validConfigurationFile = getTestCalendarConfigurationFile("google")
-        val configuration = GoogleCalendarConfiguration.fromFile(validConfigurationFile)
+        val properties = Properties()
+        properties["connector"] = "google"
+        properties["calendar-id"] = "test@gmail.com"
+        properties["api-key"] = "test-api-key"
+        properties["time-zone"] = "Europe/Budapest"
+        storeGeneratedProperties(properties)
+        val configuration = GoogleCalendarConfiguration.fromFile(generatedConfigurationFile)
 
         val expectedTimeZone = TimeZone.getTimeZone("Europe/Budapest")
         Assertions.assertEquals(expectedTimeZone, configuration.getTimezone())
@@ -42,7 +51,7 @@ class GoogleCalendarConfigurationTest {
         val properties = Properties()
         properties["api-key"] = "test-api-key"
         properties["time-zone"] = "Europe/Budapest"
-        saveGeneratedProperties(properties)
+        storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
             GoogleCalendarConfiguration.fromFile(
@@ -56,7 +65,7 @@ class GoogleCalendarConfigurationTest {
         val properties = Properties()
         properties["calendar-id"] = "test@gmail.com"
         properties["time-zone"] = "Europe/Budapest"
-        saveGeneratedProperties(properties)
+        storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
             GoogleCalendarConfiguration.fromFile(
@@ -70,7 +79,7 @@ class GoogleCalendarConfigurationTest {
         val properties = Properties()
         properties["calendar-id"] = "test@gmail.com"
         properties["api-key"] = "test-api-key"
-        saveGeneratedProperties(properties)
+        storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
             GoogleCalendarConfiguration.fromFile(
@@ -80,7 +89,7 @@ class GoogleCalendarConfigurationTest {
     }
 
 
-    fun saveGeneratedProperties(properties: Properties) {
+    fun storeGeneratedProperties(properties: Properties) {
         properties.store(generatedConfigurationFile.writer(), null)
     }
 
