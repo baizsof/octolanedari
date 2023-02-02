@@ -10,8 +10,8 @@ import java.util.stream.Stream
 import kotlin.test.assertEquals
 
 
-class GapIntervalSearcherTest {
-    private val gapIntervalSearcher: GapIntervalSearcher = GapIntervalSearcher()
+class FreeIntervalsSearcherTest {
+    private val freeIntervalsSearcher: FreeIntervalsSearcher = FreeIntervalsSearcher()
 
     /*
     search interval -----------|xxxxxxxx|-
@@ -22,7 +22,7 @@ class GapIntervalSearcherTest {
     @Test
     fun `given search interval without intervals, when search executed, then search interval is returned`() {
         val searchIntervals = createInterval(startHour = 11, endHour = 12)
-        assertEquals(listOf(searchIntervals), gapIntervalSearcher.search(searchIntervals, emptyList()))
+        assertEquals(listOf(searchIntervals), freeIntervalsSearcher.search(searchIntervals, emptyList()))
     }
 
     /*
@@ -38,7 +38,7 @@ class GapIntervalSearcherTest {
         )
 
         val searchIntervals = createInterval(startHour = 11, endHour = 12)
-        assertEquals(listOf(searchIntervals), gapIntervalSearcher.search(searchIntervals, intervals))
+        assertEquals(listOf(searchIntervals), freeIntervalsSearcher.search(searchIntervals, intervals))
     }
 
     /*
@@ -54,7 +54,7 @@ class GapIntervalSearcherTest {
         )
 
         val searchIntervals = createInterval(startHour = 6, endHour = 7)
-        assertEquals(listOf(searchIntervals), gapIntervalSearcher.search(searchIntervals, intervals))
+        assertEquals(listOf(searchIntervals), freeIntervalsSearcher.search(searchIntervals, intervals))
     }
 
     /*
@@ -70,7 +70,7 @@ class GapIntervalSearcherTest {
         )
 
         val searchIntervals = createInterval(startHour = 6, endHour = 7)
-        assertEquals(listOf(searchIntervals), gapIntervalSearcher.search(searchIntervals, intervals))
+        assertEquals(listOf(searchIntervals), freeIntervalsSearcher.search(searchIntervals, intervals))
     }
 
     /*
@@ -88,7 +88,7 @@ class GapIntervalSearcherTest {
 
         val searchIntervals = createInterval(startHour = 10, endHour = 14)
         val expectedInterval = createInterval(startHour = 12, endHour = 14)
-        assertEquals(listOf(expectedInterval), gapIntervalSearcher.search(searchIntervals, intervals))
+        assertEquals(listOf(expectedInterval), freeIntervalsSearcher.search(searchIntervals, intervals))
     }
 
     /*
@@ -106,7 +106,7 @@ class GapIntervalSearcherTest {
 
         val searchIntervals = createInterval(startHour = 10, endHour = 14)
         val expectedInterval = createInterval(startHour = 12, endHour = 14)
-        assertEquals(listOf(expectedInterval), gapIntervalSearcher.search(searchIntervals, intervals))
+        assertEquals(listOf(expectedInterval), freeIntervalsSearcher.search(searchIntervals, intervals))
     }
 
     /*
@@ -124,7 +124,7 @@ class GapIntervalSearcherTest {
 
         val searchIntervals = createInterval(startHour = 10, endHour = 14)
         val expectedInterval = createInterval(startHour = 10, endHour = 13)
-        assertEquals(listOf(expectedInterval), gapIntervalSearcher.search(searchIntervals, intervals))
+        assertEquals(listOf(expectedInterval), freeIntervalsSearcher.search(searchIntervals, intervals))
     }
 
 
@@ -143,7 +143,7 @@ class GapIntervalSearcherTest {
 
         val searchIntervals = createInterval(startHour = 10, endHour = 14)
         val expectedInterval = createInterval(startHour = 10, endHour = 13)
-        assertEquals(listOf(expectedInterval), gapIntervalSearcher.search(searchIntervals, intervals))
+        assertEquals(listOf(expectedInterval), freeIntervalsSearcher.search(searchIntervals, intervals))
     }
 
     /*
@@ -162,7 +162,7 @@ class GapIntervalSearcherTest {
         val searchIntervals = createInterval(startHour = 10, endHour = 14)
         val expectedInterval1 = createInterval(startHour = 10, endHour = 11)
         val expectedInterval2 = createInterval(startHour = 12, endHour = 14)
-        assertEquals(listOf(expectedInterval1, expectedInterval2), gapIntervalSearcher.search(
+        assertEquals(listOf(expectedInterval1, expectedInterval2), freeIntervalsSearcher.search(
             searchIntervals,
             intervals
         ))
@@ -174,7 +174,7 @@ class GapIntervalSearcherTest {
         testRecord.expectedInterval.forEach{
             interval -> interval.toString()
         }
-        val actual = gapIntervalSearcher.search(testRecord.searchInterval, testRecord.intervals)
+        val actual = freeIntervalsSearcher.search(testRecord.searchInterval, testRecord.intervals)
         assertEquals(
             testRecord.expectedInterval, actual
         )

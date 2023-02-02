@@ -3,7 +3,7 @@ package calendari.calendar.interval.searcher
 import org.joda.time.Interval
 
 
-class GapIntervalSearcher : IntervalSearcher {
+class FreeIntervalsSearcher : IntervalSearcher {
 
     override fun search(searchInterval: Interval, intervals: List<Interval>): List<Interval> {
         if (intervals.isEmpty()) {
