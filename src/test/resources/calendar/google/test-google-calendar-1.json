@@ -32,7 +32,7 @@
       "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
       "iCalUID": "test@google.com",
       "start": {
-        "dateTime": "2022-11-20T18:00:00+01:00",
+        "dateTime": "2022-11-20T17:00:00+01:00",
         "timeZone": "Europe/Budapest"
       },
       "etag": "test-e-tag",
@@ -50,30 +50,12 @@
       "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
       "iCalUID": "test@google.com",
       "start": {
-        "dateTime": "2022-11-20T18:00:00+01:00",
-        "timeZone": "Europe/Budapest"
-      },
-      "etag": "test-e-tag",
-      "end": {
-        "dateTime": "2022-11-20T21:00:00+01:00",
-        "timeZone": "Europe/Budapest"
-      },
-      "id": "test-id",
-      "updated": "2022-10-20T06:10:26.031Z",
-      "status": "confirmed"
-    },
-    {
-      "visibility": "private",
-      "kind": "calendar#event",
-      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
-      "iCalUID": "test@google.com",
-      "start": {
         "dateTime": "2022-11-21T08:00:00+01:00",
         "timeZone": "Europe/Budapest"
       },
       "etag": "test-e-tag",
       "end": {
-        "dateTime": "2022-11-21T15:00:00+01:00",
+        "dateTime": "2022-11-21T09:00:00+01:00",
         "timeZone": "Europe/Budapest"
       },
       "id": "test-id",
@@ -86,7 +68,7 @@
       "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
       "iCalUID": "test@google.com",
       "start": {
-        "dateTime": "2022-11-21T09:00:00+01:00",
+        "dateTime": "2022-11-21T10:00:00+01:00",
         "timeZone": "Europe/Budapest"
       },
       "etag": "test-e-tag",
@@ -96,42 +78,6 @@
       },
       "id": "test-id",
       "updated": "2022-11-11T16:17:24.709Z",
-      "status": "confirmed"
-    },
-    {
-      "visibility": "private",
-      "kind": "calendar#event",
-      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
-      "iCalUID": "test@google.com",
-      "start": {
-        "dateTime": "2022-11-20T16:00:00+01:00",
-        "timeZone": "Europe/Budapest"
-      },
-      "etag": "test-e-tag",
-      "end": {
-        "dateTime": "2022-11-20T20:00:00+01:00",
-        "timeZone": "Europe/Budapest"
-      },
-      "id": "test-id",
-      "updated": "2022-11-11T21:39:16.706Z",
-      "status": "confirmed"
-    },
-    {
-      "visibility": "private",
-      "kind": "calendar#event",
-      "htmlLink": "https://www.google.com/calendar/event?eid=some-id&ctz=Europe/Budapest",
-      "iCalUID": "test@google.com",
-      "start": {
-        "dateTime": "2022-11-21T12:00:00+01:00",
-        "timeZone": "Europe/Budapest"
-      },
-      "etag": "test-e-tag",
-      "end": {
-        "dateTime": "2022-11-21T20:00:00+01:00",
-        "timeZone": "Europe/Budapest"
-      },
-      "id": "test-id",
-      "updated": "2022-11-14T11:27:18.113Z",
       "status": "confirmed"
     }
   ]
