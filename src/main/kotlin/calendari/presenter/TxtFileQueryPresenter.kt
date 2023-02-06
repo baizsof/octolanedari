@@ -4,7 +4,7 @@ import calendari.calendar.EventCandidate
 import java.io.File
 
 class TxtFileQueryPresenter : QueryPresenter {
-    val file = File("query.txt")
+    private val file = File("query.txt")
 
     override fun present(candidates: ArrayList<EventCandidate>) {
         file.writeText("Query result\n\n")
@@ -12,11 +12,10 @@ class TxtFileQueryPresenter : QueryPresenter {
         for ((calendarName, eventCandidates) in eventCandidatesGroupedByCalendarNameSortedByStart.entries) {
             file.appendText("$calendarName\n")
             for (evenCandidate in eventCandidates) {
-                var userFriendlyIntervalFormat : String
-                if(evenCandidate.interval.start.toLocalDate().equals(evenCandidate.interval.end.toLocalDate())) {
-                     userFriendlyIntervalFormat = "${evenCandidate.interval.start.toString("yyyy-MM-dd")} ${evenCandidate.interval.start.toString("HH:mm")}-${evenCandidate.interval.end.toString("HH:mm")} "
+                val userFriendlyIntervalFormat : String = if(evenCandidate.interval.start.toLocalDate().equals(evenCandidate.interval.end.toLocalDate())) {
+                    "${evenCandidate.interval.start.toString("yyyy-MM-dd")} ${evenCandidate.interval.start.toString("HH:mm")}-${evenCandidate.interval.end.toString("HH:mm")}"
                 } else {
-                     userFriendlyIntervalFormat = "${evenCandidate.interval.start.toString("yyyy-MM-dd HH:mm")} ${evenCandidate.interval.end.toString("yyyy-MM-dd HH:mm")} "
+                    "${evenCandidate.interval.start.toString("yyyy-MM-dd HH:mm")} ${evenCandidate.interval.end.toString("yyyy-MM-dd HH:mm")} "
                 }
                 file.appendText("$userFriendlyIntervalFormat\n")
             }
