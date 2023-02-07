@@ -3,7 +3,9 @@ package calendari.presenter
 import calendari.calendar.EventCandidate
 import calendari.util.createDateTime
 import org.joda.time.Interval
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import java.nio.file.Paths
 
 class TxtFileQueryPresenterTest {
 
@@ -35,8 +37,12 @@ class TxtFileQueryPresenterTest {
     )
 
     @Test
-    fun name() {
-        val presenter = TxtFileQueryPresenter()
+    fun `given list of event candidates, when present called, then event candidates file equals with expected query file`() {
+        val presenterTestFolder = Paths.get("src", "test", "resources", "presenter")
+        val actualFile = presenterTestFolder.resolve("actual-query.txt").toFile()
+        val expectedFile = presenterTestFolder.resolve("expected-query.txt").toFile()
+        val presenter = TxtFileQueryPresenter(actualFile)
         presenter.present(eventCandidates)
+        Assertions.assertEquals(expectedFile.readText() ,actualFile.readText())
     }
 }
