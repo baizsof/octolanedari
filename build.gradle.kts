@@ -1,7 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.20"
+    kotlin("jvm") version "1.8.10"
+    application
 }
 
 group = "com.balazsizsof"
@@ -13,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
     implementation("org.apache.httpcomponents:httpclient:4.5.13")
     implementation("org.json:json:20220924")
     implementation("org.apache.commons:commons-lang3:3.12.0")
@@ -28,4 +30,8 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+application {
+    mainClassName = "calendari.Octolendari"
 }
