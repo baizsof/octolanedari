@@ -1,3 +1,4 @@
 connector=teamup
 calendar-id=test-calendar-id
 time-zone=Europe/Budapest
+type=many
