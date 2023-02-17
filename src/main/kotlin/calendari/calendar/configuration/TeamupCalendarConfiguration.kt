@@ -21,7 +21,10 @@ class TeamupCalendarConfiguration(private val calendarId: String, private val ti
         fun fromFile(file: File): TeamupCalendarConfiguration {
             val properties = Properties()
             properties.load(file.reader())
-
+            return fromProperties(properties)
+        }
+        @JvmStatic
+        fun fromProperties(properties: Properties): TeamupCalendarConfiguration {
             val calendarId: String = properties.getProperty("calendar-id") ?: throw CalendarConfigurationException(
                 CALENDAR_ID_REQUIRED
             )

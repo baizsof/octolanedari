@@ -29,6 +29,10 @@ class GoogleCalendarConfiguration(
             val properties = Properties()
             properties.load(file.reader())
 
+            return fromProperties(properties)
+        }
+        @JvmStatic
+        fun fromProperties(properties: Properties): GoogleCalendarConfiguration {
             val apiKey: String = properties.getProperty("api-key") ?: throw CalendarConfigurationException(
                 API_KEY_REQUIRED
             )
