@@ -5,7 +5,7 @@ import java.io.File
 
 class TxtFileQueryPresenter(private val file : File = File("query.txt")) : QueryPresenter {
 
-    override fun present(candidates: ArrayList<EventCandidate>) {
+    override fun present(candidates: List<EventCandidate>) {
         file.writeText("Query result\n")
         val eventCandidatesGroupedByCalendarNameSortedByStart = candidates.sortedBy{ it.interval.start }.groupBy { it.calendarName }
         for ((calendarName, eventCandidates) in eventCandidatesGroupedByCalendarNameSortedByStart.entries) {
