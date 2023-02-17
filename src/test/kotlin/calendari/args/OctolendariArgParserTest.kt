@@ -17,8 +17,7 @@ class OctolendariArgParserTest {
             "--end",
             "2023-02-14",
             "--calendars",
-            configurationsFolder.resolve("google-test.calendar").toString(),
-            configurationsFolder.resolve("google-test.calendar").toString(),
+            configurationsFolder.toString(),
             "--output",
             configurationsFolder.resolve("query.txt").toString()
         )
@@ -28,7 +27,7 @@ class OctolendariArgParserTest {
             LocalDate.parse("2023-02-14"),
             listOf(
                 File(configurationsFolder.resolve("google-test.calendar").toString()),
-                File(configurationsFolder.resolve("google-test.calendar").toString())
+                File(configurationsFolder.resolve("teamup-test.calendar").toString())
             ),
             File(configurationsFolder.resolve("query.txt").toString())
         )
