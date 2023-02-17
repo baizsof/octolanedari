@@ -6,6 +6,7 @@ import kotlinx.cli.required
 import java.io.File
 import java.io.FileNotFoundException
 import java.time.LocalDate
+import java.util.Properties
 
 class OctolendariArgParser {
     fun parse(args: Array<String>): OctolendariConfiguration {
@@ -17,6 +18,12 @@ class OctolendariArgParser {
         parser.parse(args)
 
         val calendarConfigurationFiles : List<File> = File(calendars).listFiles{ it -> it.extension == "calendar" }?.toList() ?: throw FileNotFoundException("Could not found .configuration file(s) at the given path $calendars")
-        return OctolendariConfiguration(LocalDate.parse(start), LocalDate.parse(end), calendarConfigurationFiles, File(output))
+        val calendarConfigurationPropertiesList : ArrayList<Properties> = arrayListOf()
+        for(calendarConfigurationFile in calendarConfigurationFiles){
+            val calendarConfigurationProperties = Properties()
+            calendarConfigurationProperties.load(calendarConfigurationFile.reader())
+            calendarConfigurationPropertiesList.add(calendarConfigurationProperties)
+        }
+        return OctolendariConfiguration(LocalDate.parse(start), LocalDate.parse(end), calendarConfigurationPropertiesList, File(output))
     }
 }

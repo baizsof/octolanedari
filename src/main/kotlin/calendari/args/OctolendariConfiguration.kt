@@ -2,10 +2,11 @@ package calendari.args
 
 import java.io.File
 import java.time.LocalDate
+import java.util.Properties
 
 data class OctolendariConfiguration(
-    private val start: LocalDate,
-    private val end: LocalDate,
-    private val calendarConfigurationFiles: List<File>,
-    private val output : File
+    val start: LocalDate,
+    val end: LocalDate,
+    val calendarConfigurationProperties: List<Properties>,
+    val output : File
 )
