@@ -14,6 +14,8 @@ import java.util.Properties
 
 class OneToManyFreeOverlappingIntervalQueryFactory(private val configuration: OctolendariConfiguration) : QueryFactory(configuration) {
     override fun create(): Query {
+        //TODO: OCT-1 revise QueryFactory functionality
+        //TODO: OCT-2 increase code coverage for QueryFactory
         val oneCalendarProperty : Properties = this.configuration.calendarConfigurationProperties.first { it.containsValue("one") }
         val oneCalendar = getCalendar(oneCalendarProperty)
         val manyCalendars = arrayListOf<Calendar>()
