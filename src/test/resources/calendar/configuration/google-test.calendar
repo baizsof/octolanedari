@@ -1,0 +1,5 @@
+connector=google
+calendar-id=test1@gmail.com
+api-key=test1-api-key
+timezone=Europe/Budapest
+type=one
