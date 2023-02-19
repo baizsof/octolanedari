@@ -5,12 +5,17 @@ import org.junit.jupiter.api.Test
 import java.io.File
 import java.nio.file.Paths
 import java.time.LocalDate
+import java.util.Properties
 
 class OctolendariArgParserTest {
 
     @Test
-    fun test() {
+    fun `given valid arguments, when argparser called, then expected config is returned`() {
         val configurationsFolder = Paths.get("src", "test", "resources", "calendar", "configuration")
+        val googleTestProperties = Properties()
+        googleTestProperties.load(File(configurationsFolder.resolve("google-test.calendar").toString()).reader())
+        val teamupTestProperties = Properties()
+        teamupTestProperties.load(File(configurationsFolder.resolve("teamup-test.calendar").toString()).reader())
         val args: Array<String> = arrayOf(
             "--start",
             "2023-02-12",
@@ -26,11 +31,12 @@ class OctolendariArgParserTest {
             LocalDate.parse("2023-02-12"),
             LocalDate.parse("2023-02-14"),
             listOf(
-                File(configurationsFolder.resolve("google-test.calendar").toString()),
-                File(configurationsFolder.resolve("teamup-test.calendar").toString())
+                googleTestProperties,
+                teamupTestProperties
             ),
             File(configurationsFolder.resolve("query.txt").toString())
         )
         assertEquals(expected, configuration)
     }
+
 }
