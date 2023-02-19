@@ -32,3 +32,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 /src/test/resources/calendar/configuration/*-test-generated.calendar
+/src/main/resources/calendar/
