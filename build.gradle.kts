@@ -20,6 +20,10 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("joda-time:joda-time:2.12.2")
 
+    implementation("com.google.api-client:google-api-client:2.0.0")
+    implementation("com.google.oauth-client:google-oauth-client-jetty:1.34.1")
+    implementation("com.google.apis:google-api-services-calendar:v3-rev20220715-2.0.0")
+
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
     testImplementation(kotlin("test"))
 }
