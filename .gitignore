@@ -5,3 +5,5 @@ bin/
 
 src/test/resources/calendar/configuration/
 src/main/resources/calendar/
+
+*query.txt
