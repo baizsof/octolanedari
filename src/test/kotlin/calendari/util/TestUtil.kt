@@ -3,7 +3,7 @@ package calendari.util
 import calendari.calendar.parser.FakeJsonWebCalendarParser
 import calendari.calendar.configuration.CalendarConfiguration
 import calendari.calendar.configuration.GoogleCalendarConfiguration
-import calendari.calendar.connector.GoogleCalendarConnector
+import calendari.calendar.connector.GoogleCalendarTokenBasedConnector
 import calendari.calendar.configuration.TeamupCalendarConfiguration
 import calendari.calendar.connector.TeamupCalendarConnector
 import org.joda.time.DateTime
@@ -22,9 +22,9 @@ fun createFakeGoogleCalendarConfiguration(): GoogleCalendarConfiguration {
     )
 }
 
-fun createFakeGoogleCalendarConnector(fakeSourceId: Int): GoogleCalendarConnector {
+fun createFakeGoogleCalendarConnector(fakeSourceId: Int): GoogleCalendarTokenBasedConnector {
     val fakeCalendarParser = FakeJsonWebCalendarParser()
-    val googleCalendarConnector = GoogleCalendarConnector(
+    val googleCalendarTokenBasedConnector = GoogleCalendarTokenBasedConnector(
         createFakeGoogleCalendarConfiguration(),
         fakeCalendarParser
     )
@@ -37,7 +37,7 @@ fun createFakeGoogleCalendarConnector(fakeSourceId: Int): GoogleCalendarConnecto
     val jsonObject = JSONObject(String(rawJson.readBytes(), StandardCharsets.UTF_8))
     fakeCalendarParser.setReturnJSONObject(jsonObject)
 
-    return googleCalendarConnector
+    return googleCalendarTokenBasedConnector
 }
 
 fun createFakeTeamUpCalendarConnector(fakeSourceId: Int) : TeamupCalendarConnector {

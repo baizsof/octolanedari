@@ -15,7 +15,7 @@ import java.net.URL
 import java.time.LocalDate
 
 
-class GoogleCalendarConnector(
+class GoogleCalendarTokenBasedConnector(
     private val configuration : CalendarConfiguration,
     private val parser : WebCalendarParser<JSONObject> = JsonWebCalendarParser(),
     private val mapper : EventMapper<JSONObject> = GoogleEventMapper()
