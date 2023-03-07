@@ -7,7 +7,7 @@ import org.json.JSONObject
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class GoogleEventMapper : EventMapper<JSONObject> {
+class GoogleJsonEventMapper : EventMapper<JSONObject> {
     override fun getEvent(rawEvent: JSONObject): Event {
         val start = LocalDateTime.parse(rawEvent.getJSONObject("start").getString("dateTime"), DateTimeFormatter.ISO_DATE_TIME)
         val end = LocalDateTime.parse(rawEvent.getJSONObject("end").getString("dateTime"), DateTimeFormatter.ISO_DATE_TIME)
