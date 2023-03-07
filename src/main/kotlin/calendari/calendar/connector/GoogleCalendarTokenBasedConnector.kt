@@ -3,7 +3,7 @@ package calendari.calendar.connector
 import calendari.calendar.configuration.CalendarConfiguration
 import calendari.calendar.Event
 import calendari.calendar.mapper.EventMapper
-import calendari.calendar.mapper.GoogleEventMapper
+import calendari.calendar.mapper.GoogleJsonEventMapper
 import calendari.calendar.parser.WebCalendarParser
 import calendari.calendar.parser.JsonWebCalendarParser
 import org.apache.http.client.utils.URIBuilder
@@ -18,7 +18,7 @@ import java.time.LocalDate
 class GoogleCalendarTokenBasedConnector(
     private val configuration : CalendarConfiguration,
     private val parser : WebCalendarParser<JSONObject> = JsonWebCalendarParser(),
-    private val mapper : EventMapper<JSONObject> = GoogleEventMapper()
+    private val mapper : EventMapper<JSONObject> = GoogleJsonEventMapper()
 ) : CalendarConnector {
     private val dateFormatUsedByGoogle: DateTimeFormatter = ISODateTimeFormat.dateTime()
     override fun getEvents(from: LocalDate, to: LocalDate) : List<Event> {
