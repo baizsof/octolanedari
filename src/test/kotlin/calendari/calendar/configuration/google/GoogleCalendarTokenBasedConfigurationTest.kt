@@ -1,7 +1,7 @@
 package calendari.calendar.configuration.google
 
 import calendari.calendar.configuration.CalendarConfigurationException
-import calendari.calendar.configuration.GoogleCalendarConfiguration
+import calendari.calendar.configuration.GoogleCalendarTokenBasedConfiguration
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -10,7 +10,7 @@ import java.nio.file.Paths
 import java.util.Properties
 import java.util.TimeZone
 
-class GoogleCalendarConfigurationTest {
+class GoogleCalendarTokenBasedConfigurationTest {
     private val generatedConfigurationFile = Paths.get("src", "test", "resources", "calendar", "configuration", "google-test-generated.calendar").toFile()
 
     @BeforeEach
@@ -26,7 +26,7 @@ class GoogleCalendarConfigurationTest {
         properties["api-key"] = "test-api-key"
         properties["time-zone"] = "Europe/Budapest"
         storeGeneratedProperties(properties)
-        val configuration = GoogleCalendarConfiguration.fromFile(generatedConfigurationFile)
+        val configuration = GoogleCalendarTokenBasedConfiguration.fromFile(generatedConfigurationFile)
 
         val expectedUrl = URL("https://clients6.google.com/calendar/v3/calendars/test@gmail.com/events?&key=test-api-key")
         Assertions.assertEquals(expectedUrl, configuration.getBaseUrl())
@@ -40,7 +40,7 @@ class GoogleCalendarConfigurationTest {
         properties["api-key"] = "test-api-key"
         properties["time-zone"] = "Europe/Budapest"
         storeGeneratedProperties(properties)
-        val configuration = GoogleCalendarConfiguration.fromFile(generatedConfigurationFile)
+        val configuration = GoogleCalendarTokenBasedConfiguration.fromFile(generatedConfigurationFile)
 
         val expectedTimeZone = TimeZone.getTimeZone("Europe/Budapest")
         Assertions.assertEquals(expectedTimeZone, configuration.getTimezone())
@@ -55,7 +55,7 @@ class GoogleCalendarConfigurationTest {
         storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
-            GoogleCalendarConfiguration.fromFile(
+            GoogleCalendarTokenBasedConfiguration.fromFile(
                 generatedConfigurationFile
             )
         }
@@ -70,7 +70,7 @@ class GoogleCalendarConfigurationTest {
         storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
-            GoogleCalendarConfiguration.fromFile(
+            GoogleCalendarTokenBasedConfiguration.fromFile(
                 generatedConfigurationFile
             )
         }
@@ -85,7 +85,7 @@ class GoogleCalendarConfigurationTest {
         storeGeneratedProperties(properties)
 
         Assertions.assertThrows(CalendarConfigurationException::class.java) {
-            GoogleCalendarConfiguration.fromFile(
+            GoogleCalendarTokenBasedConfiguration.fromFile(
                 generatedConfigurationFile
             )
         }

@@ -8,7 +8,7 @@ import java.net.URL
 import java.util.Properties
 import java.util.TimeZone
 
-class GoogleCalendarConfiguration(
+class GoogleCalendarTokenBasedConfiguration(
     private val calendarId: String,
     private val apiKey: String,
     private val timeZone: String
@@ -25,14 +25,14 @@ class GoogleCalendarConfiguration(
     companion object {
 
         @JvmStatic
-        fun fromFile(file: File): GoogleCalendarConfiguration {
+        fun fromFile(file: File): GoogleCalendarTokenBasedConfiguration {
             val properties = Properties()
             properties.load(file.reader())
 
             return fromProperties(properties)
         }
         @JvmStatic
-        fun fromProperties(properties: Properties): GoogleCalendarConfiguration {
+        fun fromProperties(properties: Properties): GoogleCalendarTokenBasedConfiguration {
             val apiKey: String = properties.getProperty("api-key") ?: throw CalendarConfigurationException(
                 API_KEY_REQUIRED
             )
@@ -42,7 +42,7 @@ class GoogleCalendarConfiguration(
             val timeZone: String = properties.getProperty("time-zone") ?: throw CalendarConfigurationException(
                 TIME_ZONE_REQUIRED
             )
-            return GoogleCalendarConfiguration(
+            return GoogleCalendarTokenBasedConfiguration(
                 calendarId,
                 apiKey,
                 timeZone

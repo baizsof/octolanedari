@@ -2,7 +2,7 @@ package calendari.util
 
 import calendari.calendar.parser.FakeJsonWebCalendarParser
 import calendari.calendar.configuration.CalendarConfiguration
-import calendari.calendar.configuration.GoogleCalendarConfiguration
+import calendari.calendar.configuration.GoogleCalendarTokenBasedConfiguration
 import calendari.calendar.connector.GoogleCalendarTokenBasedConnector
 import calendari.calendar.configuration.TeamupCalendarConfiguration
 import calendari.calendar.connector.TeamupCalendarConnector
@@ -14,8 +14,8 @@ import java.nio.file.Paths
 
 val calendarTestResourcesPath: Path = Paths.get("src", "test", "resources", "calendar")
 
-fun createFakeGoogleCalendarConfiguration(): GoogleCalendarConfiguration {
-    return GoogleCalendarConfiguration(
+fun createFakeGoogleCalendarConfiguration(): GoogleCalendarTokenBasedConfiguration {
+    return GoogleCalendarTokenBasedConfiguration(
         "test@gmail.com",
         "testApiKey",
         "Europe/Budapest"
