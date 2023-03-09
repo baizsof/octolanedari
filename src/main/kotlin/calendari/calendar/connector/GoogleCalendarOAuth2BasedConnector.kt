@@ -1,6 +1,7 @@
 package calendari.calendar.connector
 
 import calendari.calendar.Event
+import calendari.calendar.configuration.GoogleCalendarOAuth2BasedConfiguration
 import com.google.api.client.auth.oauth2.Credential
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver
@@ -24,8 +25,9 @@ import java.time.LocalDate
 import java.util.Collections
 
 
-class GoogleCalendarOAuth2BasedConnector : CalendarConnector{
-    private val APPLICATION_NAME = "Google Calendar API Java Quickstart"
+class GoogleCalendarOAuth2BasedConnector(
+    private val configuration : GoogleCalendarOAuth2BasedConfiguration) : CalendarConnector{
+    private val APPLICATION_NAME = "Octolendari"
     private val JSON_FACTORY: JsonFactory = GsonFactory.getDefaultInstance()
 
     /**
