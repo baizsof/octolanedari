@@ -1,7 +1,8 @@
-package calendari.calendar.connector
+package calendari.calendar.connector.google
 
 import calendari.calendar.Event
-import calendari.calendar.configuration.GoogleCalendarOAuth2BasedConfiguration
+import calendari.calendar.configuration.google.GooglePrivateCalendarConfiguration
+import calendari.calendar.connector.CalendarConnector
 import com.google.api.client.auth.oauth2.Credential
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver
@@ -26,8 +27,9 @@ import java.util.Collections
 import java.util.Date
 
 
-class GoogleCalendarOAuth2BasedConnector(
-    private val configuration : GoogleCalendarOAuth2BasedConfiguration) : CalendarConnector{
+class GooglePrivateCalendarConnector(
+    private val configuration : GooglePrivateCalendarConfiguration
+) : CalendarConnector {
     private val APPLICATION_NAME = "Octolendari"
     private val JSON_FACTORY: JsonFactory = GsonFactory.getDefaultInstance()
 
@@ -53,7 +55,7 @@ class GoogleCalendarOAuth2BasedConnector(
     @Throws(IOException::class)
     private fun getCredentials(HTTP_TRANSPORT: NetHttpTransport): Credential? {
         // Load client secrets.
-        val `in`: InputStream =GoogleCalendarOAuth2BasedConnector::class.java.getResourceAsStream(CREDENTIALS_FILE_PATH)
+        val `in`: InputStream = GooglePrivateCalendarConnector::class.java.getResourceAsStream(CREDENTIALS_FILE_PATH)
             ?: throw FileNotFoundException("Resource not found: $CREDENTIALS_FILE_PATH")
         val clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, InputStreamReader(`in`))
 

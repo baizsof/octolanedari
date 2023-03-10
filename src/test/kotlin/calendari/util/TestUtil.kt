@@ -2,8 +2,8 @@ package calendari.util
 
 import calendari.calendar.parser.FakeJsonWebCalendarParser
 import calendari.calendar.configuration.CalendarConfiguration
-import calendari.calendar.configuration.GoogleCalendarTokenBasedConfiguration
-import calendari.calendar.connector.GoogleCalendarTokenBasedConnector
+import calendari.calendar.configuration.google.GooglePublicCalendarConfiguration
+import calendari.calendar.connector.google.GooglePublicCalendarConnector
 import calendari.calendar.configuration.TeamupCalendarConfiguration
 import calendari.calendar.connector.TeamupCalendarConnector
 import org.joda.time.DateTime
@@ -14,17 +14,17 @@ import java.nio.file.Paths
 
 val calendarTestResourcesPath: Path = Paths.get("src", "test", "resources", "calendar")
 
-fun createFakeGoogleCalendarConfiguration(): GoogleCalendarTokenBasedConfiguration {
-    return GoogleCalendarTokenBasedConfiguration(
+fun createFakeGoogleCalendarConfiguration(): GooglePublicCalendarConfiguration {
+    return GooglePublicCalendarConfiguration(
         "test@gmail.com",
         "testApiKey",
         "Europe/Budapest"
     )
 }
 
-fun createFakeGoogleCalendarConnector(fakeSourceId: Int): GoogleCalendarTokenBasedConnector {
+fun createFakeGoogleCalendarConnector(fakeSourceId: Int): GooglePublicCalendarConnector {
     val fakeCalendarParser = FakeJsonWebCalendarParser()
-    val googleCalendarTokenBasedConnector = GoogleCalendarTokenBasedConnector(
+    val googlePublicCalendarConnector = GooglePublicCalendarConnector(
         createFakeGoogleCalendarConfiguration(),
         fakeCalendarParser
     )
@@ -37,7 +37,7 @@ fun createFakeGoogleCalendarConnector(fakeSourceId: Int): GoogleCalendarTokenBas
     val jsonObject = JSONObject(String(rawJson.readBytes(), StandardCharsets.UTF_8))
     fakeCalendarParser.setReturnJSONObject(jsonObject)
 
-    return googleCalendarTokenBasedConnector
+    return googlePublicCalendarConnector
 }
 
 fun createFakeTeamUpCalendarConnector(fakeSourceId: Int) : TeamupCalendarConnector {

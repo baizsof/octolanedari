@@ -3,10 +3,10 @@ package calendari.query.factory
 import calendari.args.OctolendariConfiguration
 import calendari.calendar.Calendar
 import calendari.calendar.configuration.CalendarConfiguration
-import calendari.calendar.configuration.GoogleCalendarTokenBasedConfiguration
+import calendari.calendar.configuration.google.GooglePublicCalendarConfiguration
 import calendari.calendar.configuration.TeamupCalendarConfiguration
 import calendari.calendar.connector.CalendarConnector
-import calendari.calendar.connector.GoogleCalendarTokenBasedConnector
+import calendari.calendar.connector.google.GooglePublicCalendarConnector
 import calendari.calendar.connector.TeamupCalendarConnector
 import calendari.query.OneToManyFreeOverlappingIntervalQuery
 import calendari.query.Query
@@ -29,8 +29,8 @@ class OneToManyFreeOverlappingIntervalQueryFactory(private val configuration: Oc
         val calendarConfiguration: CalendarConfiguration
         val oneCalendarConnector: CalendarConnector
         if (oneCalendarProperties.getProperty("connector").equals("google")) {
-            calendarConfiguration = GoogleCalendarTokenBasedConfiguration.fromProperties(oneCalendarProperties)
-            oneCalendarConnector = GoogleCalendarTokenBasedConnector(calendarConfiguration)
+            calendarConfiguration = GooglePublicCalendarConfiguration.fromProperties(oneCalendarProperties)
+            oneCalendarConnector = GooglePublicCalendarConnector(calendarConfiguration)
             return Calendar(oneCalendarConnector, "google")
         } else {
             calendarConfiguration = TeamupCalendarConfiguration.fromProperties(oneCalendarProperties)

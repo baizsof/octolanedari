@@ -1,8 +1,8 @@
-package calendari.calendar.configuration
+package calendari.calendar.configuration.google
 
 import java.nio.file.Path
 
-class GoogleCalendarOAuth2BasedConfiguration(
+class GooglePrivateCalendarConfiguration(
      val tokenPath: Path,
      val credentialFilePath: Path,
 ) {

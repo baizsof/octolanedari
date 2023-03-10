@@ -1,9 +1,10 @@
-package calendari.calendar.connector
+package calendari.calendar.connector.google
 
 import calendari.calendar.configuration.CalendarConfiguration
 import calendari.calendar.Event
+import calendari.calendar.connector.CalendarConnector
 import calendari.calendar.mapper.EventMapper
-import calendari.calendar.mapper.GoogleJsonEventMapper
+import calendari.calendar.mapper.google.GooglePublicApiEventMapper
 import calendari.calendar.parser.WebCalendarParser
 import calendari.calendar.parser.JsonWebCalendarParser
 import org.apache.http.client.utils.URIBuilder
@@ -15,10 +16,10 @@ import java.net.URL
 import java.time.LocalDate
 
 
-class GoogleCalendarTokenBasedConnector(
+class GooglePublicCalendarConnector(
     private val configuration : CalendarConfiguration,
     private val parser : WebCalendarParser<JSONObject> = JsonWebCalendarParser(),
-    private val mapper : EventMapper<JSONObject> = GoogleJsonEventMapper()
+    private val mapper : EventMapper<JSONObject> = GooglePublicApiEventMapper()
 ) : CalendarConnector {
     private val dateFormatUsedByGoogle: DateTimeFormatter = ISODateTimeFormat.dateTime()
     override fun getEvents(from: LocalDate, to: LocalDate) : List<Event> {

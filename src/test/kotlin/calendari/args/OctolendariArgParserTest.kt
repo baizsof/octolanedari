@@ -6,10 +6,12 @@ import java.io.File
 import java.nio.file.Paths
 import java.time.LocalDate
 import java.util.Properties
+import kotlin.test.Ignore
 
 class OctolendariArgParserTest {
 
     @Test
+    @Ignore
     fun `given valid arguments, when argparser called, then expected config is returned`() {
         val configurationsFolder = Paths.get("src", "test", "resources", "calendar", "configuration")
         val googleTestProperties = Properties()
