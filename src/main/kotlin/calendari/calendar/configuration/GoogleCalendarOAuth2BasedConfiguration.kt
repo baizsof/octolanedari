@@ -1,9 +1,10 @@
 package calendari.calendar.configuration
 
+import java.nio.file.Path
+
 class GoogleCalendarOAuth2BasedConfiguration(
-    private val calendarId: String,
-    private val apiKey: String,
-    private val timeZone: String
+     val tokenPath: Path,
+     val credentialFilePath: Path,
 ) {
 
 }

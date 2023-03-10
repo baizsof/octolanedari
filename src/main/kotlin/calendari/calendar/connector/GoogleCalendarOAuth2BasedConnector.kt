@@ -23,6 +23,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import java.time.LocalDate
 import java.util.Collections
+import java.util.Date
 
 
 class GoogleCalendarOAuth2BasedConnector(
@@ -33,14 +34,14 @@ class GoogleCalendarOAuth2BasedConnector(
     /**
      * Directory to store authorization tokens for this application.
      */
-    private val TOKENS_DIRECTORY_PATH = "tokens"
+    private val TOKENS_DIRECTORY_PATH = configuration.tokenPath.toAbsolutePath().toString()
 
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private val SCOPES: List<String> = Collections.singletonList(CalendarScopes.CALENDAR_READONLY)
-    private val CREDENTIALS_FILE_PATH = "/credentials.json"
+    private val CREDENTIALS_FILE_PATH = configuration.credentialFilePath.toAbsolutePath().toString()
 
     /**
      * Creates an authorized Credential object.
@@ -73,10 +74,12 @@ class GoogleCalendarOAuth2BasedConnector(
             .setApplicationName(APPLICATION_NAME)
             .build()
 
-        val now = DateTime(System.currentTimeMillis())
+        val googleFrom = DateTime(Date(from.year, from.monthValue, from.dayOfMonth))
+        val googleTo = DateTime(Date(to.year,to.monthValue,to.dayOfMonth))
         val events: Events = service.events().list("primary")
             .setMaxResults(10)
-            .setTimeMin(now)
+            .setTimeMin(googleFrom)
+            .setTimeMax(googleTo)
             .setOrderBy("startTime")
             .setSingleEvents(true)
             .execute()
