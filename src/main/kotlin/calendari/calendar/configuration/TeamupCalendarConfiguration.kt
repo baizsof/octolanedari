@@ -8,7 +8,7 @@ import java.util.Properties
 import java.util.TimeZone
 
 class TeamupCalendarConfiguration(private val calendarId: String, private val timeZone: String) :
-    CalendarConfiguration {
+    PublicCalendarConfiguration {
     override fun getBaseUrl(): URL {
         return URL("https://teamup.com/$calendarId/events?tz=${timeZone}")
     }

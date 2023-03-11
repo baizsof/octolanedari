@@ -1,6 +1,6 @@
 package calendari.calendar.configuration.google
 
-import calendari.calendar.configuration.CalendarConfiguration
+import calendari.calendar.configuration.PublicCalendarConfiguration
 import calendari.calendar.configuration.CalendarConfigurationException
 import calendari.calendar.configuration.CalendarConfigurationException.Companion.API_KEY_REQUIRED
 import calendari.calendar.configuration.CalendarConfigurationException.Companion.CALENDAR_ID_REQUIRED
@@ -14,7 +14,7 @@ class GooglePublicCalendarConfiguration(
     private val calendarId: String,
     private val apiKey: String,
     private val timeZone: String
-) : CalendarConfiguration {
+) : PublicCalendarConfiguration {
 
     override fun getBaseUrl(): URL {
         return URL("https://clients6.google.com/calendar/v3/calendars/$calendarId/events?&key=$apiKey")

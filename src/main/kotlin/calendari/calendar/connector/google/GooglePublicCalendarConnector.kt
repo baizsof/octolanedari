@@ -1,6 +1,6 @@
 package calendari.calendar.connector.google
 
-import calendari.calendar.configuration.CalendarConfiguration
+import calendari.calendar.configuration.PublicCalendarConfiguration
 import calendari.calendar.Event
 import calendari.calendar.connector.CalendarConnector
 import calendari.calendar.mapper.EventMapper
@@ -17,7 +17,7 @@ import java.time.LocalDate
 
 
 class GooglePublicCalendarConnector(
-    private val configuration : CalendarConfiguration,
+    private val configuration : PublicCalendarConfiguration,
     private val parser : WebCalendarParser<JSONObject> = JsonWebCalendarParser(),
     private val mapper : EventMapper<JSONObject> = GooglePublicApiEventMapper()
 ) : CalendarConnector {

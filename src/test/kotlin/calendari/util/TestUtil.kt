@@ -1,7 +1,7 @@
 package calendari.util
 
 import calendari.calendar.parser.FakeJsonWebCalendarParser
-import calendari.calendar.configuration.CalendarConfiguration
+import calendari.calendar.configuration.PublicCalendarConfiguration
 import calendari.calendar.configuration.google.GooglePublicCalendarConfiguration
 import calendari.calendar.connector.google.GooglePublicCalendarConnector
 import calendari.calendar.configuration.TeamupCalendarConfiguration
@@ -58,7 +58,7 @@ fun createFakeTeamUpCalendarConnector(fakeSourceId: Int) : TeamupCalendarConnect
     return teamupCalendarConnector
 }
 
-fun createFakeTeamupCalendarConfiguration(): CalendarConfiguration {
+fun createFakeTeamupCalendarConfiguration(): PublicCalendarConfiguration {
     return TeamupCalendarConfiguration("some-api-key", "Europe/Budapest")
 }
 

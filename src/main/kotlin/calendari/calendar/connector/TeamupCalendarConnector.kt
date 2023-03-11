@@ -1,6 +1,6 @@
 package calendari.calendar.connector
 
-import calendari.calendar.configuration.CalendarConfiguration
+import calendari.calendar.configuration.PublicCalendarConfiguration
 import calendari.calendar.Event
 import calendari.calendar.mapper.EventMapper
 import calendari.calendar.parser.JsonWebCalendarParser
@@ -12,7 +12,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class TeamupCalendarConnector(
-    private val configuration : CalendarConfiguration,
+    private val configuration : PublicCalendarConfiguration,
     private val parser : JsonWebCalendarParser = JsonWebCalendarParser(),
     private val mapper : EventMapper<JSONObject> = TeamUpEventMapper()
 ) : CalendarConnector {
