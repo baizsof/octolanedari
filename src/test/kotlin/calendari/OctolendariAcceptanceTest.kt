@@ -17,5 +17,6 @@ class OctolendariAcceptanceTest{
             "--output",
             configurationsFolder.resolve("query.txt").toString()
         )
+        Octolendari.main(args)
     }
 }
