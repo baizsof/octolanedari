@@ -22,6 +22,7 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Collections
 import java.util.Date
 import kotlin.io.path.inputStream
@@ -71,8 +72,8 @@ class GooglePrivateCalendarConnector(
             .setApplicationName(APPLICATION_NAME)
             .build()
 
-        val googleFrom = DateTime(Date(from.year, from.monthValue, from.dayOfMonth))
-        val googleTo = DateTime(Date(to.year, to.monthValue, to.dayOfMonth))
+        val googleFrom = DateTime(Date.from(from.atStartOfDay(ZoneId.systemDefault()).toInstant()))
+        val googleTo = DateTime(Date.from(to.atStartOfDay(ZoneId.systemDefault()).toInstant()))
         val googleEvents: Events = service.events().list("primary")
             .setMaxResults(10)
             .setTimeMin(googleFrom)
