@@ -34,16 +34,16 @@ class OneToManyFreeOverlappingIntervalQueryFactory(private val configuration: Oc
             if(oneCalendarProperties.getProperty("auth").equals("public")){
                 calendarConfiguration = GooglePublicCalendarConfiguration.fromProperties(oneCalendarProperties)
                 oneCalendarConnector = GooglePublicCalendarConnector(calendarConfiguration)
-                return Calendar(oneCalendarConnector, "google")
+                return Calendar(oneCalendarConnector, name = "google")
             } else {
                 val privateCalendarConfiguration = GooglePrivateCalendarConfiguration.fromProperties(oneCalendarProperties)
                 val privateCalendarConnector = GooglePrivateCalendarConnector(privateCalendarConfiguration)
-                return Calendar(privateCalendarConnector, "google")
+                return Calendar(privateCalendarConnector, name = "google")
             }
         } else {
             calendarConfiguration = TeamupCalendarConfiguration.fromProperties(oneCalendarProperties)
             oneCalendarConnector = TeamupCalendarConnector(calendarConfiguration)
-            return Calendar(oneCalendarConnector, "teamup")
+            return Calendar(oneCalendarConnector, name = "teamup")
         }
     }
 
