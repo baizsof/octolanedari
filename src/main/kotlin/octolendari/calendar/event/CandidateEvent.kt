@@ -1,8 +1,8 @@
-package octolendari.calendar
+package octolendari.calendar.event
 
 import org.joda.time.Interval
 
-data class EventCandidate(
+data class CandidateEvent(
     val calendarName: String,
     val interval: Interval,
 )

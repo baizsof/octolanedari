@@ -1,10 +1,11 @@
 package octolendari.calendar.filter
 
-import octolendari.calendar.Event
+import octolendari.calendar.event.Event
 
 class AllEventFilter : EventFilter {
-    override fun doFilter(allEvents: List<Event>): List<Event> {
-        return allEvents
+
+    override fun filter(events: List<Event>): List<Event> {
+        TODO("Not yet implemented")
     }
 
 }

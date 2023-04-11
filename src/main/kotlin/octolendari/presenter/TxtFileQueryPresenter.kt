@@ -1,11 +1,11 @@
 package octolendari.presenter
 
-import octolendari.calendar.EventCandidate
+import octolendari.calendar.event.CandidateEvent
 import java.io.File
 
 class TxtFileQueryPresenter(private val file : File = File("query.txt")) : QueryPresenter {
 
-    override fun present(candidates: List<EventCandidate>) {
+    override fun present(candidates: List<CandidateEvent>) {
         file.writeText("Query result\n")
         val eventCandidatesGroupedByCalendarNameSortedByStart = candidates.sortedBy{ it.interval.start }.groupBy { it.calendarName }
         for ((calendarName, eventCandidates) in eventCandidatesGroupedByCalendarNameSortedByStart.entries) {

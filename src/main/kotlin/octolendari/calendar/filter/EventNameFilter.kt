@@ -1,10 +1,10 @@
 package octolendari.calendar.filter
 
-import octolendari.calendar.Event
+import octolendari.calendar.event.Event
 
 class EventNameFilter(private val criteria: String) : EventFilter {
 
-    override fun doFilter(allEvents: List<Event>): List<Event> {
-        return allEvents.filter { event -> event.name == criteria }
+    override fun filter(events: List<Event>): List<Event> {
+        TODO("Not yet implemented")
     }
 }

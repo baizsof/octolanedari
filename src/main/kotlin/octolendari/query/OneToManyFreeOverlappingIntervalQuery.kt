@@ -1,7 +1,7 @@
 package octolendari.query
 
 import octolendari.calendar.Calendar
-import octolendari.calendar.EventCandidate
+import octolendari.calendar.event.CandidateEvent
 import org.joda.time.Interval
 import java.time.LocalDate
 
@@ -15,8 +15,8 @@ class OneToManyFreeOverlappingIntervalQuery(
     (A∩B)U(A∩C)U..
      */
 
-    override fun doQuery(): List<EventCandidate> {
-        val eventCandidates: ArrayList<EventCandidate> = arrayListOf()
+    override fun doQuery(): List<CandidateEvent> {
+        val candidateEvents: ArrayList<CandidateEvent> = arrayListOf()
 
         val oneCalendarFilteredEvents = oneCalendar.getFilteredEvents(from, to)
         for (oneCalendarFilteredEvent in oneCalendarFilteredEvents) {
@@ -25,12 +25,12 @@ class OneToManyFreeOverlappingIntervalQuery(
                 for (calendarFreeInterval in calendarFreeIntervals) {
                     val overlappedInterval : Interval? = calendarFreeInterval.interval.overlap(oneCalendarFilteredEvent.interval)
                     overlappedInterval?.let {
-                        val eventCandidate = EventCandidate(calendar.name, overlappedInterval)
-                        eventCandidates.add(eventCandidate)
+                        val candidateEvent = CandidateEvent(calendar.name, overlappedInterval)
+                        candidateEvents.add(candidateEvent)
                     }
                 }
             }
         }
-        return eventCandidates
+        return candidateEvents
     }
 }

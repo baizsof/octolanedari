@@ -1,7 +1,7 @@
 package octolendari.query
 
-import octolendari.calendar.EventCandidate
+import octolendari.calendar.event.CandidateEvent
 
 interface Query {
-    fun doQuery() : List<EventCandidate>
+    fun doQuery() : List<CandidateEvent>
 }

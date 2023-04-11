@@ -1,7 +1,7 @@
 package octolendari.calendar.filter
 
-import octolendari.calendar.Event
+import octolendari.calendar.event.Event
 
 interface EventFilter {
-    fun doFilter(allEvents: List<Event>): List<Event>
+    fun filter(events: List<Event>): List<Event>
 }

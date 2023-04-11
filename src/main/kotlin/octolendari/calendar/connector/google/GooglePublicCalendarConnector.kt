@@ -1,8 +1,9 @@
 package octolendari.calendar.connector.google
 
 import octolendari.calendar.configuration.PublicCalendarConfiguration
-import octolendari.calendar.Event
+import octolendari.calendar.event.ReservedEvent
 import octolendari.calendar.connector.CalendarConnector
+import octolendari.calendar.event.Event
 import octolendari.calendar.mapper.EventMapper
 import octolendari.calendar.mapper.google.GooglePublicApiEventMapper
 import octolendari.calendar.parser.WebCalendarParser
@@ -22,7 +23,7 @@ class GooglePublicCalendarConnector(
     private val mapper : EventMapper<JSONObject> = GooglePublicApiEventMapper()
 ) : CalendarConnector {
     private val dateFormatUsedByGoogle: DateTimeFormatter = ISODateTimeFormat.dateTime()
-    override fun getEvents(from: LocalDate, to: LocalDate) : List<Event> {
+    override fun getEvents(from: LocalDate, to: LocalDate): List<Event> {
         val queryURL = createURL(from, to)
         parser.setUrl(queryURL)
 
@@ -41,12 +42,12 @@ class GooglePublicCalendarConnector(
             .build().toURL()
     }
 
-    private fun mapEvents(queryResult: JSONObject): List<Event> {
-        val events: ArrayList<Event> = arrayListOf()
+    private fun mapEvents(queryResult: JSONObject): List<ReservedEvent> {
+        val reservedEvents: ArrayList<ReservedEvent> = arrayListOf()
         for (rawEvent in queryResult.getJSONArray("items")) {
-            events.add(mapper.getEvent(rawEvent as JSONObject))
+            reservedEvents.add(mapper.getEvent(rawEvent as JSONObject))
         }
-        return events
+        return reservedEvents
 
     }
 }

@@ -1,9 +1,9 @@
 package octolendari.calendar.mapper
 
-import octolendari.calendar.Event
+import octolendari.calendar.event.ReservedEvent
 
 interface EventMapper<T> {
 
-    fun getEvent(rawEvent: T): Event
+    fun getEvent(rawEvent: T): ReservedEvent
 
 }

@@ -1,6 +1,9 @@
 package octolendari.calendar
 
 import octolendari.calendar.connector.CalendarConnector
+import octolendari.calendar.event.CandidateEvent
+import octolendari.calendar.event.Event
+import octolendari.calendar.event.ReservedEvent
 import octolendari.calendar.filter.AllEventFilter
 import octolendari.calendar.filter.EventFilter
 import octolendari.calendar.interval.searcher.FreeIntervalsSearcher
@@ -10,15 +13,15 @@ import java.time.LocalDate
 
 open class Calendar(
     private val calendarConnector: CalendarConnector,
-    val name: String,
-    private val eventFilter: EventFilter = AllEventFilter()
+    private val eventFilter: EventFilter = AllEventFilter(),
+    val name: String
 ) {
     fun getFilteredEvents(from: LocalDate, to: LocalDate): List<Event> {
         val allEvents = calendarConnector.getEvents(from, to)
-        return eventFilter.doFilter(allEvents)
+        return eventFilter.filter(allEvents)
     }
 
-    fun getFreeIntervalsBetweenFilteredEvents(from: LocalDate, to: LocalDate): List<EventCandidate> {
+    fun getFreeIntervalsBetweenFilteredEvents(from: LocalDate, to: LocalDate): List<CandidateEvent> {
         val sortedEventsIntervals = getSortedFilteredEventsIntervals(from, to)
         val searchInterval = Interval(
             createDateTime(from),
@@ -30,13 +33,13 @@ open class Calendar(
             sortedEventsIntervals
         )
 
-        return freeIntervals.map { EventCandidate(name, it) }
+        return freeIntervals.map { CandidateEvent(name, it) }
     }
 
     private fun getSortedFilteredEventsIntervals(
         from: LocalDate,
         to: LocalDate
-    ) = getFilteredEvents(from, to).map { event: Event -> event.interval }.sortedBy { it.start }
+    ) = getFilteredEvents(from, to).map { reservedEvent: Event -> reservedEvent.interval }.sortedBy { it.start }
 
     private fun createDateTime(from: LocalDate) = DateTime(from.year, from.monthValue, from.dayOfMonth, 0, 0)
     override fun equals(other: Any?): Boolean {

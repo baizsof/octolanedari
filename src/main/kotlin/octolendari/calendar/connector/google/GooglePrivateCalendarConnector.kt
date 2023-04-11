@@ -1,6 +1,6 @@
 package octolendari.calendar.connector.google
 
-import octolendari.calendar.Event
+import octolendari.calendar.event.ReservedEvent
 import octolendari.calendar.configuration.google.GooglePrivateCalendarConfiguration
 import octolendari.calendar.connector.CalendarConnector
 import octolendari.calendar.mapper.google.GooglePrivateApiEventMapper
@@ -18,6 +18,7 @@ import com.google.api.client.util.store.FileDataStoreFactory
 import com.google.api.services.calendar.Calendar
 import com.google.api.services.calendar.CalendarScopes
 import com.google.api.services.calendar.model.Events
+import octolendari.calendar.event.Event
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -54,13 +55,13 @@ class GooglePrivateCalendarConnector(
     override fun getEvents(from: LocalDate, to: LocalDate): List<Event> {
         val googleEvents: List<com.google.api.services.calendar.model.Event> = getGoogleEvents(from, to)
 
-        val calendariEvents = arrayListOf<Event>()
+        val calendariReservedEvents = arrayListOf<ReservedEvent>()
         val mapper = GooglePrivateApiEventMapper()
         for (item in googleEvents) {
-            calendariEvents.add(mapper.getEvent(item))
+            calendariReservedEvents.add(mapper.getEvent(item))
         }
 
-        return calendariEvents
+        return calendariReservedEvents
     }
 
     private fun getGoogleEvents(

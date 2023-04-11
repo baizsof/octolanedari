@@ -1,7 +1,7 @@
 package octolendari.presenter
 
-import octolendari.calendar.EventCandidate
+import octolendari.calendar.event.CandidateEvent
 
 interface QueryPresenter {
-    fun present(candidates: List<EventCandidate>)
+    fun present(candidates: List<CandidateEvent>)
 }
